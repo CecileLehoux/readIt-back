@@ -21,6 +21,7 @@
   "homepage": "https://github.com/CecileLehoux/readIt-back#readme",
   "dependencies": {
     "@prisma/client": "^3.9.0",
+    "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "mysql2": "^2.3.3"

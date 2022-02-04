@@ -13,6 +13,11 @@ const findOne = (id) => {
     .then(([results]) => results[0]);
 };
 
+const findOneComment = (id) => {
+  return db
+  .query('SELECT Rating.* FROM Rating JOIN Book ON Rating.id = Book.Rating_id WHERE Book.id = ?', [id])
+  .then(([results]) => results[0]);
+}
 
 const create = ({ name, type, image, pages, description, author }) => {
   return db
@@ -36,4 +41,4 @@ const destroy = (id) => {
     .then(([result]) => result.affectedRows !== 0);
 };
 
-module.exports = { findMany, findOne, create, update, destroy };
+module.exports = { findMany, findOne, findOneComment, create, update, destroy };

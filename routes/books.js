@@ -24,6 +24,18 @@ bookRouter.get('/:id', (req, res) => {
     });
 });
 
+bookRouter.get('/:id/comment', (req, res) => {
+  Book.findOneComment(req.params.id)
+    .then((comment) => {
+      if (comment) res.json(comment).status(201);
+      else res.status(404).send('Comment not found');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error retrieving Rating from database');
+    });
+});
+
 bookRouter.get('/:id/tracks', async (req, res) => {
   try {
     const { id } = req.params;

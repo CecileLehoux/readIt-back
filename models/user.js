@@ -13,7 +13,6 @@ const findOne = (id) => {
     .then(([results]) => results[0]);
 };
 
-
 const create = ({ firstname, lastname, mail, levelUser}) => {
   return db
     .query(

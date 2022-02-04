@@ -24,6 +24,18 @@ ratingRouter.get('/:id', (req, res) => {
     });
 });
 
+ratingRouter.get('/:id/comment', (req, res) => {
+  Rating.findOneComment(req.params.id)
+    .then((comment) => {
+      if (comment) res.json(comment).status(201);
+      else res.status(404).send('Comment not found');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error retrieving Rating from database');
+    });
+});
+
 ratingRouter.post('/', (req, res) => {
   Rating.create(req.body)
     .then((createdMovie) => {
